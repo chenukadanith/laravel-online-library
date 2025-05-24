@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'title',
         'description',
@@ -13,9 +16,4 @@ class Book extends Model
         'price',
         'is_available'
     ];
-    
-    protected $casts = [
-        'is_available' => 'boolean',
-        'price' => 'decimal:2'
-    ];  
 }

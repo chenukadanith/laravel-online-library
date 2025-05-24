@@ -8,24 +8,24 @@ use Illuminate\Http\Request;
 class BookController extends Controller
 {
     // Get paginated list of books
-    public function index()
-    {
-        return Book::paginate(10);
+   public function index()
+{
+    return Book::get();
+}
+
+// Search books
+public function search(Request $request)
+{
+    $query = Book::query();
+
+    if ($search = $request->input('search')) {
+        $query->where('title', 'like', "%{$search}%")
+              ->orWhere('description', 'like', "%{$search}%")
+              ->orWhere('genre', 'like', "%{$search}%");
     }
 
-    // Search books
-    public function search(Request $request)
-    {
-        $query = Book::query();
-
-        if ($search = $request->input('search')) {
-            $query->where('title', 'like', "%{$search}%")
-                  ->orWhere('description', 'like', "%{$search}%")
-                  ->orWhere('genre', 'like', "%{$search}%");
-        }
-
-        return $query->paginate(10);
-    }
+    return $query->get();
+}
 
     // Borrow a book
     public function borrow(Book $book)
