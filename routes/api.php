@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\api\AuthController;
+use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BookController; // <-- Make sure to import your Controller
 
 /*
 |--------------------------------------------------------------------------
@@ -14,26 +14,26 @@ use App\Http\Controllers\BookController; // <-- Make sure to import your Control
 |
 */
 
-// Auto-generated route (often used with Sanctum for SPA authentication)
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('/test', function () {
+    return response()->json(['message' => 'API routing works!']);
 });
 
-// Your Book API routes
+// Authentication routes
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+
+// Public book routes (accessible without authentication)
 Route::prefix('books')->group(function () {
     Route::get('/', [BookController::class, 'index']);
     Route::get('/search', [BookController::class, 'search']);
-    Route::post('/borrow/{book}', [BookController::class, 'borrow']);
-    Route::post('/return/{book}', [BookController::class, 'return']);
+    Route::get('/borrow/{book}', [BookController::class, 'borrow']);
+    Route::get('/return/{book}', [BookController::class, 'return']);
 });
 
-// Consider keeping this if your frontend explicitly requests CSRF tokens,
-// but for pure API usage (e.g., Postman, mobile apps, JavaScript frameworks
-// that don't rely on Laravel sessions for authentication like JWT, OAuth),
-// CSRF tokens are generally not needed.
-// Route::get('/csrf-token', function () {
-//     return response()->json([
-//         'csrf_token' => csrf_token()
-//     ]);
-// }
-// );
+// Protected routes (require authentication)
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/user', [AuthController::class, 'user']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+    
+    // Add any other protected routes here
+});
