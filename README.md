@@ -7,6 +7,21 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+# Library Management System
+
+## About This Project
+
+This project is a modern and efficient **Library Management System** built using the powerful Laravel framework. It provides a robust backend API for managing library operations, focusing on user interaction and secure data handling.
+
+Key features of this system include:
+
+* **User Authentication:** Seamless user registration and login capabilities, secured by a modern authentication system.
+* **Token-Based API Security:** Implements **Laravel Sanctum** for secure, token-based API authentication, ensuring that only authorized users can access protected resources and perform actions like borrowing or returning books.
+* **Book Management:** Core functionalities for listing, searching, borrowing, and returning books.
+* **Data Pagination:** Efficiently handles and displays large datasets, such as extensive book catalogs, through integrated **pagination** to enhance user experience and performance.
+
+This system serves as a foundational platform for a comprehensive digital library, emphasizing both functionality and security.
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
@@ -35,14 +50,14 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 
 ### Premium Partners
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+-   **[Vehikl](https://vehikl.com)**
+-   **[Tighten Co.](https://tighten.co)**
+-   **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+-   **[64 Robots](https://64robots.com)**
+-   **[Curotec](https://www.curotec.com/services/technologies/laravel)**
+-   **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+-   **[Redberry](https://redberry.international/laravel-development)**
+-   **[Active Logic](https://activelogic.com)**
 
 ## Contributing
 
