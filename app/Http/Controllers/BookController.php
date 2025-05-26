@@ -7,13 +7,11 @@ use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
-    // Get paginated list of books
-   public function index()
-{
-    return Book::get();
-}
+  public function index()
+    {
+        return Book::where('is_available', true)->get();
+    }
 
-// Search books
 public function search(Request $request)
 {
     $query = Book::query();
@@ -27,7 +25,6 @@ public function search(Request $request)
     return $query->get();
 }
 
-    // Borrow a book
     public function borrow(Book $book)
     {
         if (!$book->is_available) {
@@ -38,7 +35,6 @@ public function search(Request $request)
         return response()->json(['message' => 'Book borrowed successfully']);
     }
 
-    // Return a book
     public function return(Book $book)
     {
         if ($book->is_available) {
